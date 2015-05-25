@@ -1,0 +1,20 @@
+{
+    "name": "openpp/map-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony OpenppMapBundle",
+    "keywords": ["map", "openpp", "openlayers"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "webware,Inc."
+        }
+    ],
+    "require": {
+        "symfony/symfony": "~2.3",
+
+        "creof/doctrine2-spatial": "dev-master"
+    },
+    "autoload": {
+        "psr-4": { "Openpp\\MapBundle\\": "" }
+    }
+}

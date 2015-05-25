@@ -1,0 +1,62 @@
+{% block openpp_type_map_geometry_widget %}
+    {% spaceless %}
+        <ul {{ block('widget_container_attributes') }}>
+        {% for child in form %}
+            <li>
+                {{ form_widget(child) }}
+                {{ form_label(child) }}
+            </li>
+        {% endfor %}
+        </ul>
+
+        <div id="{{ map_attr.id }}" style="{{ map_attr.style }}"></div>
+        <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                var projection4326 = new OpenLayers.Projection("EPSG:4326");
+                var projection3857 = new OpenLayers.Projection('EPSG:3857');
+                var options = {
+                    projection: projection3857,
+                    maxExtent : new OpenLayers.Bounds(-20037508, -20037508, 20037508, 20037508.34),
+                    maxResolution : 156543.0339,
+                    units : 'm'
+                };
+                map = new OpenLayers.Map({{ map_attr.id }}, options);
+                var layer = new OpenLayers.Layer.OSM();
+
+                map.addLayer(layer);
+                map.setCenter(new OpenLayers.LonLat(138.75, 35.999887)
+                    .transform(
+                        projection4326,
+                        projection3857
+                     ),
+                     6
+                );
+
+                var control = new OpenLayers.Control();
+                OpenLayers.Util.extend(control, {
+                    draw: function () {
+                         this.box = new OpenLayers.Handler.Box(
+                         control,
+                         {"done": this.notice},
+                         {keyMask: OpenLayers.Handler.MOD_SHIFT});
+                         this.box.activate();
+                    },
+
+                    notice: function (bounds) {
+                        try {
+                            var geoJson = new OpenLayers.Format.GeoJSON();
+                            var geometry = bounds.transform(map.getProjectionObject(), projection4326).toGeometry();
+                            var geoJsonStr = geoJson.write(geometry);
+                        } catch (e) {
+                            console.log(e);
+                        }
+                        $("#" + "{{ id }}" + "_geometry").val(geoJsonStr);
+                    }
+                });
+
+                map.addControl(control);
+            });
+        </script>
+    {% endspaceless %}
+{% endblock %}
