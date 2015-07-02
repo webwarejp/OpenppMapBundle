@@ -66,7 +66,5 @@ class GeometryToStringTransformer implements DataTransformerInterface
             default:
                 throw InvalidValueException::unsupportedWktType($geoArray['type']);
         }
-
-        return null;
     }
 }
