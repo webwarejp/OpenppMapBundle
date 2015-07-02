@@ -7,7 +7,14 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormBuilderInterface;
+use Openpp\MapBundle\Form\EventListener\MapGeometoryListener;
+use Openpp\MapBundle\Form\DataTransformer\GeometryToStringTransformer;
 
+/**
+ * 
+ * @author shiroko@webware.co.jp
+ *
+ */
 class MapGeometryType extends AbstractType
 {
     /**
@@ -29,7 +36,15 @@ class MapGeometryType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('geometry', 'text', array('label' => false, 'read_only' => true));
+          $builder->add(
+              $builder->create('geometry', 'text', array(
+                  'label' => false,
+                  'read_only' => true,
+              ))
+              ->addModelTransformer(new GeometryToStringTransformer())
+          )
+          ->addEventSubscriber(new MapGeometoryListener())
+          ;
     }
 
     /**

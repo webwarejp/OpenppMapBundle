@@ -1,6 +1,6 @@
 <?php
 
-namespace Openpp\MapBundle\Form\DataTramsformer;
+namespace Openpp\MapBundle\Form\DataTransformer;
 
 use Symfony\Component\Form\DataTransformerInterface;
 use CrEOF\Spatial\PHP\Types\Geometry\GeometryInterface;
@@ -17,12 +17,12 @@ use CrEOF\Spatial\Exception\InvalidValueException;
  * @author shiroko@webware.co.jp
  *
  */
-class GeometryToStringTransformer extends DataTransformerInterface
+class GeometryToStringTransformer implements DataTransformerInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function transform(GeometryInterface $geometry)
+    public function transform($geometry)
     {
         if (null === $geometry) {
             return "";
@@ -45,7 +45,7 @@ class GeometryToStringTransformer extends DataTransformerInterface
             return null;
         }
 
-        $geoArray = json_decode($string);
+        $geoArray = json_decode($string, true);
 
         switch ($geoArray['type']) {
             case 'Point':
@@ -56,7 +56,7 @@ class GeometryToStringTransformer extends DataTransformerInterface
 
             case 'LineString':
                 return new LineString($geoArray['coordinates']);
-            
+
             case 'MultiPoint':
                 return new MultiPoint($geoArray['coordinates']);
 
