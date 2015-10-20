@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "symfony/symfony": "~2.3",
+        "symfony/symfony": "~2.7",
 
         "creof/doctrine2-spatial": "dev-master"
     },
