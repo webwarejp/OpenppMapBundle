@@ -6,7 +6,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\DataTransformerInterface;
-use Openpp\MapBundle\Form\DataTransformer\GeometryToStringTransformer;
+use Openpp\MapBundle\Form\DataTransformer\GeometryToJsonTransformer;
 
 /**
  * 
@@ -27,7 +27,7 @@ class MapGeometoryCircleListener implements EventSubscriberInterface
     public function __construct($circleClass, DataTransformerInterface $transformer = null)
     {
         $this->circleClass = $circleClass;
-        $this->transformer = $transformer ? $transformer : new GeometryToStringTransformer();
+        $this->transformer = $transformer ? $transformer : new GeometryToJsonTransformer();
     }
 
     /**

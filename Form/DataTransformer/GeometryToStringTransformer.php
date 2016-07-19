@@ -3,12 +3,7 @@
 namespace Openpp\MapBundle\Form\DataTransformer;
 
 use Symfony\Component\Form\DataTransformerInterface;
-use CrEOF\Spatial\PHP\Types\Geometry\Point;
-use CrEOF\Spatial\PHP\Types\Geometry\Polygon;
-use CrEOF\Spatial\PHP\Types\Geometry\LineString;
-use CrEOF\Spatial\PHP\Types\Geometry\MultiPoint;
-use CrEOF\Spatial\PHP\Types\Geometry\MultiLineString;
-use CrEOF\Spatial\Exception\InvalidValueException;
+use CrEOF\Geo\WKT\Parser;
 
 /**
  * 
@@ -26,12 +21,7 @@ class GeometryToStringTransformer implements DataTransformerInterface
             return "";
         }
 
-        $geoArray = array(
-            'type' => $geometry->getType(),
-            'coordinates' => $geometry->toArray()
-        );
-
-        return json_encode($geoArray);
+        return strtoupper($geometry->getType()) . '(' . $geometry->__toString() . ')';
     }
 
     /**
@@ -43,26 +33,8 @@ class GeometryToStringTransformer implements DataTransformerInterface
             return null;
         }
 
-        $geoArray = json_decode($string, true);
+        $parser = new Parser($string);
 
-        switch ($geoArray['type']) {
-            case 'Point':
-                return new Point($geoArray['coordinates']);
-
-            case 'Polygon':
-                return new Polygon($geoArray['coordinates']);
-
-            case 'LineString':
-                return new LineString($geoArray['coordinates']);
-
-            case 'MultiPoint':
-                return new MultiPoint($geoArray['coordinates']);
-
-            case 'MultiLineString':
-                return new MultiLineString($geoArray['coordinates']);
-
-            default:
-                throw InvalidValueException::unsupportedWktType($geoArray['type']);
-        }
+        return $parser->parse();
     }
 }
