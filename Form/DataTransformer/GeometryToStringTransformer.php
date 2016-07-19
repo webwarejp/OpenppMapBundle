@@ -3,13 +3,11 @@
 namespace Openpp\MapBundle\Form\DataTransformer;
 
 use Symfony\Component\Form\DataTransformerInterface;
-use CrEOF\Spatial\PHP\Types\Geometry\GeometryInterface;
 use CrEOF\Spatial\PHP\Types\Geometry\Point;
 use CrEOF\Spatial\PHP\Types\Geometry\Polygon;
 use CrEOF\Spatial\PHP\Types\Geometry\LineString;
 use CrEOF\Spatial\PHP\Types\Geometry\MultiPoint;
 use CrEOF\Spatial\PHP\Types\Geometry\MultiLineString;
-use Sonata\Cache\Exception\UnsupportedException;
 use CrEOF\Spatial\Exception\InvalidValueException;
 
 /**

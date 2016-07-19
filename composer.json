@@ -11,8 +11,9 @@
     ],
     "require": {
         "symfony/symfony": "~2.8",
+        "sonata-project/notification-bundle" : "^3.0",
 
-        "creof/doctrine2-spatial": "^0.1"
+        "creof/doctrine2-spatial": "dev-master"
     },
     "autoload": {
         "psr-4": { "Openpp\\MapBundle\\": "" }

@@ -20,9 +20,24 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('openpp_map');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $supportedManagerTypes = array('orm');
+
+        $rootNode
+            ->children()
+                ->scalarNode('db_driver')
+                    ->defaultValue('orm')
+                    ->validate()
+                        ->ifNotInArray($supportedManagerTypes)
+                        ->thenInvalid('The db_driver %s is not supported. Please choose one of ' . json_encode($supportedManagerTypes))
+                    ->end()
+                ->end()
+                ->arrayNode('class')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('circle')->defaultValue('Application\\Openpp\\MapBundle\\Entity\\Circle')->end()
+                    ->end()
+                ->end()
+            ->end();
 
         return $treeBuilder;
     }
