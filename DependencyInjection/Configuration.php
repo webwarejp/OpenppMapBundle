@@ -35,6 +35,7 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('circle')->defaultValue('Application\\Openpp\\MapBundle\\Entity\\Circle')->end()
+                        ->scalarNode('point')->defaultValue('Application\\Openpp\\MapBundle\\Entity\\Point')->end()
                     ->end()
                 ->end()
             ->end();

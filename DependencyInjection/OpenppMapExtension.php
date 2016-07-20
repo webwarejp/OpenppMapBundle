@@ -24,6 +24,7 @@ class OpenppMapExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('form.xml');
+        $loader->load('orm.xml');
 
         $this->configureClass($config, $container);
     }
@@ -35,5 +36,6 @@ class OpenppMapExtension extends Extension
     protected function configureClass($config, ContainerBuilder $container)
     {
         $container->setParameter('openpp.map.circle.class', $config['class']['circle']);
+        $container->setParameter('openpp.map.point.class', $config['class']['point']);
     }
 }

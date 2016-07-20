@@ -2,22 +2,13 @@
 
 namespace Openpp\MapBundle\Model;
 
-/**
- *
- * @author shiroko@webware.co.jp
- *
- */
-class Circle implements CircleInterface
+
+class Point implements PointInterface
 {
     /**
      * @var \CrEOF\Spatial\PHP\Types\Geometry\Point
      */
-    protected $center;
-
-    /**
-     * @var integer
-     */
-    protected $radius;
+    protected $point;
 
     /**
      * @var \DateTime
@@ -32,33 +23,17 @@ class Circle implements CircleInterface
     /**
      * {@inheritdoc}
      */
-    public function getCenter()
+    public function getPoint()
     {
-        return $this->center;
+        return $this->point;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setCenter(\CrEOF\Spatial\PHP\Types\Geometry\Point $center)
+    public function setPoint(\CrEOF\Spatial\PHP\Types\Geometry\Point $point)
     {
-        $this->center = $center;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getRadius()
-    {
-        return $this->radius;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setRadius($radius)
-    {
-        $this->radius = $radius;
+        $this->point = $point;
     }
 
     /**

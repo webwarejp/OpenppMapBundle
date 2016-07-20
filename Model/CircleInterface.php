@@ -2,7 +2,6 @@
 
 namespace Openpp\MapBundle\Model;
 
-use CrEOF\Spatial\PHP\Types\Geometry\GeometryInterface;
 
 /**
  * 
@@ -14,16 +13,16 @@ interface CircleInterface
     /**
      * Returns the center of circle.
      *
-     * @return GeometryInterface
+     * @return \CrEOF\Spatial\PHP\Types\Geometry\Point
      */
     public function getCenter();
 
     /**
      * Sets the center of circle.
      *
-     * @param GeometryInterface $center
+     * @param \CrEOF\Spatial\PHP\Types\Geometry\Point $center
      */
-    public function setCenter(GeometryInterface $center);
+    public function setCenter(\CrEOF\Spatial\PHP\Types\Geometry\Point $center);
 
     /**
      * Returns the radius of circle.
