@@ -12,14 +12,14 @@ interface PointInterface
     /**
      * Returns the point.
      *
-     * @return Point
+     * @return \CrEOF\Spatial\PHP\Types\Geometry\Point
      */
     public function getPoint();
 
     /**
      * Sets the point.
      *
-     * @param Point $point
+     * @param \CrEOF\Spatial\PHP\Types\Geometry\Point $point
      */
     public function setPoint(\CrEOF\Spatial\PHP\Types\Geometry\Point $point);
 }
