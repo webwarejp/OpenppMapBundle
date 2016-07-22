@@ -2,7 +2,7 @@
 
 namespace Openpp\MapBundle\Querier\ORM;
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Persistence\ManagerRegistry;
 use Openpp\MapBundle\Form\DataTransformer\GeometryToStringTransformer;
 use Application\Openpp\MapBundle\Entity\Circle;
 use Doctrine\ORM\Query\ResultSetMapping;
@@ -11,9 +11,9 @@ use Openpp\MapBundle\Model\PointInterface;
 class GeometryQuerier
 {
     /**
-     * @var EntityManager
+     * @var ManagerRegistry
      */
-    protected $enityManager;
+    protected $managerRegistry;
 
     /**
      * @var \Symfony\Component\Form\DataTransformerInterface
@@ -25,9 +25,9 @@ class GeometryQuerier
      *
      * @param EntityManager $entityManager
      */
-    public function __construct(EntityManager $entityManager)
+    public function __construct(ManagerRegistry $managerRegistry)
     {
-        $this->enityManager = $entityManager;
+        $this->managerRegistry = $managerRegistry;
         $this->transformer  = new GeometryToStringTransformer();
     }
 
@@ -51,7 +51,7 @@ class GeometryQuerier
         $rsm->addScalarResult('result', 'result');
 
         $sql = 'SELECT ST_DWithin(ST_GeographyFromText(?), ST_GeographyFromText(?), ?) AS result';
-        $query = $this->enityManager->createNativeQuery($sql, $rsm);
+        $query = $this->managerRegistry->getManager()->createNativeQuery($sql, $rsm);
 
         $params = array();
         $params[] = $this->transformer->transform($point);

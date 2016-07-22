@@ -11,12 +11,12 @@
 
     <services>
         <service id="openpp.map.manager.point" class="%openpp.map.manager.point.class%">
-            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="doctrine" />
             <argument>%openpp.map.point.class%</argument>
         </service>
 
         <service id="openpp.map.geometry_querier" class="%openpp.map.geometry_querier.class%">
-            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="doctrine" />
         </service>
     </services>
 </container>
