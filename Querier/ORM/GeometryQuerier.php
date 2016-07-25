@@ -23,12 +23,12 @@ class GeometryQuerier
     /**
      * Constructor
      *
-     * @param EntityManager $entityManager
+     * @param ManagerRegistry $managerRegistry
      */
     public function __construct(ManagerRegistry $managerRegistry)
     {
         $this->managerRegistry = $managerRegistry;
-        $this->transformer  = new GeometryToStringTransformer();
+        $this->transformer = new GeometryToStringTransformer();
     }
 
     /**
@@ -43,7 +43,7 @@ class GeometryQuerier
     {
         if ($point instanceof PointInterface) {
             $point = $point->getPoint();
-        } else if (! $point instanceof \CrEOF\Spatial\PHP\Types\Geometry\Point) {
+        } else if (!$point instanceof \CrEOF\Spatial\PHP\Types\Geometry\Point) {
             throw new \InvalidArgumentException('Invalid point type.');
         }
 
