@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext"  original="file.ext">
+    <body>
+      <trans-unit id="form.center_address">
+        <source>form.center_address</source>
+        <target>Center address</target>
+      </trans-unit>
+      <trans-unit id="form.circle_radius">
+        <source>form.circle_radius</source>
+        <target>Radius</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -31,19 +31,23 @@ class MapGeometryCircleType extends AbstractMapGeometryType implements Container
     {
         $builder
             ->add('address', 'text', array(
+                'label' => 'form.center_address',
+                'translation_domain' => 'OpenppMapBundle',
                 'mapped' => false,
             ))
             ->add('center', 'hidden', array(
                 'label' => false,
             ))
             ->add('radius', 'integer', array(
+                'label' => 'form.circle_radius',
+                'translation_domain' => 'OpenppMapBundle',
                 'attr' => array(
                     'min' => 0,
                     'step' => 10,
                 ),
             ))
             ->addEventSubscriber(new MapGeometoryCircleListener(
-                    $this->containter->getParameter('openpp.map.circle.class')
+                $this->containter->getParameter('openpp.map.circle.class')
             ))
         ;
     }

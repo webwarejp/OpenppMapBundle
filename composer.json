@@ -11,7 +11,7 @@
     ],
     "require": {
         "symfony/symfony": "~2.8",
-        "sonata-project/notification-bundle" : "^3.0",
+        "sonata-project/easy-extends-bundle" : "^2.1",
 
         "creof/doctrine2-spatial": "~1"
     },
