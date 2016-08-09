@@ -2,8 +2,8 @@
     {% spaceless %}
         <div {{ block('widget_container_attributes') }}>
         {% for child in form %}
-                {{ form_label(child) }}
-                {{ form_widget(child) }}
+            {{ form_label(child) }}
+            {{ form_widget(child) }}
         {% endfor %}
         </div>
 
@@ -16,7 +16,11 @@
                 if (matches) {
                     center = [parseFloat(matches[1]), parseFloat(matches[2])];
                 }
-                var map = new OpenppMap('{{ map_attr.id }}');
+                var params = {
+                    initial_center : [{{ initial_lonlat[0] }}, {{ initial_lonlat[1]}}],
+                    initial_zoom   : {{ initial_zoom }},
+                };
+                var map = new OpenppMap('{{ map_attr.id }}', params);
                 map.initialize();
                 map.addPointer(center, '{{ id }}' + '_center', '{{ id }}' + '_address');
                 $('#' + '{{ id }}' + '_radius').change(function() {

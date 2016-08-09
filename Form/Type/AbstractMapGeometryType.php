@@ -31,7 +31,8 @@ abstract class AbstractMapGeometryType extends AbstractType
                 'id' => 'map',
                 'style' => 'width:500px; height:400px;',
             ),
-            'initial_lonlat' => array(138.75, 35.999887), // Japan
+            'initial_lonlat' => array(139.774488, 35.684182), // Japan
+            'initial_zoom' => 16,
         ));
     }
 
@@ -40,6 +41,8 @@ abstract class AbstractMapGeometryType extends AbstractType
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $view->vars['map_attr'] = $options['map_attr'];
+        $view->vars['map_attr']       = $options['map_attr'];
+        $view->vars['initial_lonlat'] = $options['initial_lonlat'];
+        $view->vars['initial_zoom']   = $options['initial_zoom'];
     }
 }

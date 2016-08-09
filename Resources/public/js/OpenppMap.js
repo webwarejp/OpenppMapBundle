@@ -7,13 +7,20 @@
 (function(global) {
     "use strict";
 
-    function OpenppMap(mapId) {
+    function OpenppMap(mapId, params) {
         this._mapId = mapId;
         this._map = null;
 
+        params = params || {};
+        if (typeof params['initial_center'] === 'undefined') {
+            params['initial_center'] = [139.774488, 35.684182];
+        }
+        if (typeof params['initial_zoom'] === 'undefined') {
+            params['initial_zoom'] = 16;
+        }
         this._viewProjection = 'EPSG:3857';
         this._geoProjection = 'EPSG:4326';
-        this._initialCenter = [139.699103, 35.659528];
+        this._initialCenter = params['initial_center'];
         this._initialZoom = 16;
         this._pointer = null;
         this._circle = null;
@@ -126,7 +133,7 @@
     p._setRgeocode = function(rgeocodeInputId, point) {
         var coor = point.getCoordinates();
         this._rgeocoding(coor[0], coor[1], function(data) {
-            $("#" + rgeocodeInputId).val(data);
+            $("#" + rgeocodeInputId).val(data + ' ' + '(' + coor[0] + ', ' + coor[1] + ')');
         })
     };
 
