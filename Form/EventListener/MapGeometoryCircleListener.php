@@ -72,10 +72,13 @@ class MapGeometoryCircleListener implements EventSubscriberInterface
             return;
         }
 
-        $circleClass = $this->circleClass;
-        $circle = new $circleClass;
-        $circle->setCenter($this->transformer->reverseTransform($data['center']));
-        $circle->setRadius($data['radius']);
+        $circle = null;
+        if (!empty($data['center']) && !empty($data['radius'])) {
+            $circleClass = $this->circleClass;
+            $circle = new $circleClass;
+            $circle->setCenter($this->transformer->reverseTransform($data['center']));
+            $circle->setRadius($data['radius']);
+        }
 
         $event->setData($circle);
     }
