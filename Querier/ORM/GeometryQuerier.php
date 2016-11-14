@@ -4,9 +4,9 @@ namespace Openpp\MapBundle\Querier\ORM;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Openpp\MapBundle\Form\DataTransformer\GeometryToStringTransformer;
-use Application\Openpp\MapBundle\Entity\Circle;
 use Doctrine\ORM\Query\ResultSetMapping;
 use Openpp\MapBundle\Model\PointInterface;
+use Openpp\MapBundle\Model\CircleInterface;
 
 class GeometryQuerier
 {
@@ -34,12 +34,12 @@ class GeometryQuerier
     /**
      *
      * @param mixed $point
-     * @param Circle $circle
+     * @param CircleInterface $circle
      * @throws \InvalidArgumentException
      *
      * @return boolean
      */
-    public function isPointInCircle($point, Circle $circle)
+    public function isPointInCircle($point, CircleInterface $circle)
     {
         if ($point instanceof PointInterface) {
             $point = $point->getPoint();
