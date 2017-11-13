@@ -3,10 +3,10 @@
 namespace Openpp\MapBundle\Querier\ORM;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Openpp\MapBundle\Form\DataTransformer\GeometryToStringTransformer;
 use Doctrine\ORM\Query\ResultSetMapping;
-use Openpp\MapBundle\Model\PointInterface;
+use Openpp\MapBundle\Form\DataTransformer\GeometryToStringTransformer;
 use Openpp\MapBundle\Model\CircleInterface;
+use Openpp\MapBundle\Model\PointInterface;
 
 class GeometryQuerier
 {

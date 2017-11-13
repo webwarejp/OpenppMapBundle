@@ -2,11 +2,11 @@
 
 namespace Openpp\MapBundle\Form\EventListener;
 
+use Openpp\MapBundle\Form\DataTransformer\GeometryToJsonTransformer;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\Form\DataTransformerInterface;
-use Openpp\MapBundle\Form\DataTransformer\GeometryToJsonTransformer;
 
 class MapGeometoryCircleListener implements EventSubscriberInterface
 {
