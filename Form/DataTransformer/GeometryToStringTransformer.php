@@ -2,8 +2,8 @@
 
 namespace Openpp\MapBundle\Form\DataTransformer;
 
-use Symfony\Component\Form\DataTransformerInterface;
 use CrEOF\Geo\WKT\Parser;
+use Symfony\Component\Form\DataTransformerInterface;
 
 class GeometryToStringTransformer implements DataTransformerInterface
 {

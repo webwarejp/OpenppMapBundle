@@ -2,10 +2,10 @@
 
 namespace Openpp\MapBundle\Form\Type;
 
-use Symfony\Component\Form\FormBuilderInterface;
+use Openpp\MapBundle\Form\EventListener\MapGeometoryCircleListener;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Openpp\MapBundle\Form\EventListener\MapGeometoryCircleListener;
+use Symfony\Component\Form\FormBuilderInterface;
 
 /**
  * @author shiroko@webware.co.jp
