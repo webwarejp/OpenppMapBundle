@@ -2,11 +2,6 @@
 
 namespace Openpp\MapBundle\Model;
 
-/**
- *
- * @author shiroko@webware.co.jp
- *
- */
 class Circle implements CircleInterface
 {
     /**
@@ -15,7 +10,7 @@ class Circle implements CircleInterface
     protected $center;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $radius;
 

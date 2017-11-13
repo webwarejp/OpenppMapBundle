@@ -2,12 +2,6 @@
 
 namespace Openpp\MapBundle\Model;
 
-
-/**
- * 
- * @author shiroko@webware.co.jp
- *
- */
 interface CircleInterface
 {
     /**
@@ -27,14 +21,14 @@ interface CircleInterface
     /**
      * Returns the radius of circle.
      *
-     * @return integer
+     * @return int
      */
     public function getRadius();
 
     /**
      * Sets the radius of circle.
      *
-     * @param integer $radius
+     * @param int $radius
      */
     public function setRadius($radius);
 }

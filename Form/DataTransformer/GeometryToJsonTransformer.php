@@ -11,11 +11,6 @@ use CrEOF\Spatial\PHP\Types\Geometry\MultiLineString;
 use CrEOF\Spatial\PHP\Types\Geometry\MultiPolygon;
 use CrEOF\Spatial\Exception\InvalidValueException;
 
-/**
- * 
- * @author shiroko@webware.co.jp
- *
- */
 class GeometryToJsonTransformer implements DataTransformerInterface
 {
     /**
@@ -24,7 +19,7 @@ class GeometryToJsonTransformer implements DataTransformerInterface
     public function transform($geometry)
     {
         if (null === $geometry) {
-            return "";
+            return '';
         }
 
         return $geometry->toJson();
@@ -35,7 +30,7 @@ class GeometryToJsonTransformer implements DataTransformerInterface
      */
     public function reverseTransform($string)
     {
-        if (null === $string || "" === $string) {
+        if (null === $string || '' === $string) {
             return null;
         }
 
@@ -61,7 +56,7 @@ class GeometryToJsonTransformer implements DataTransformerInterface
                 return new MultiPolygon($geoArray['coordinates']);
 
             default:
-                throw InvalidValueException($geoArray['type']);
+                throw new InvalidValueException($geoArray['type']);
         }
     }
 }

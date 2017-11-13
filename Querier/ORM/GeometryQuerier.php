@@ -21,7 +21,7 @@ class GeometryQuerier
     protected $transformer;
 
     /**
-     * Constructor
+     * Initializes a new GeometryQuerier.
      *
      * @param ManagerRegistry $managerRegistry
      */
@@ -32,18 +32,18 @@ class GeometryQuerier
     }
 
     /**
-     *
-     * @param mixed $point
+     * @param mixed           $point
      * @param CircleInterface $circle
+     *
      * @throws \InvalidArgumentException
      *
-     * @return boolean
+     * @return bool
      */
     public function isPointInCircle($point, CircleInterface $circle)
     {
         if ($point instanceof PointInterface) {
             $point = $point->getPoint();
-        } else if (!$point instanceof \CrEOF\Spatial\PHP\Types\Geometry\Point) {
+        } elseif (!$point instanceof \CrEOF\Spatial\PHP\Types\Geometry\Point) {
             throw new \InvalidArgumentException('Invalid point type.');
         }
 
@@ -53,7 +53,7 @@ class GeometryQuerier
         $sql = 'SELECT ST_DWithin(ST_GeographyFromText(?), ST_GeographyFromText(?), ?) AS result';
         $query = $this->managerRegistry->getManager()->createNativeQuery($sql, $rsm);
 
-        $params = array();
+        $params = [];
         $params[] = $this->transformer->transform($point);
         $params[] = $this->transformer->transform($circle->getCenter());
         $params[] = $circle->getRadius();

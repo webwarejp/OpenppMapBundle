@@ -12,7 +12,7 @@ interface PointManagerInterface
     public function getClass();
 
     /**
-     * Returns an empty point instance
+     * Returns an empty point instance.
      *
      * @return PointInterface
      */

@@ -2,11 +2,6 @@
 
 namespace Openpp\MapBundle\Model;
 
-/**
- *
- * @author shiroko@webware.co.jp
- *
- */
 interface PointInterface
 {
     /**

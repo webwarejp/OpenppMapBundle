@@ -5,11 +5,6 @@ namespace Openpp\MapBundle\Form\DataTransformer;
 use Symfony\Component\Form\DataTransformerInterface;
 use CrEOF\Geo\WKT\Parser;
 
-/**
- * 
- * @author shiroko@webware.co.jp
- *
- */
 class GeometryToStringTransformer implements DataTransformerInterface
 {
     /**
@@ -18,10 +13,10 @@ class GeometryToStringTransformer implements DataTransformerInterface
     public function transform($geometry)
     {
         if (null === $geometry) {
-            return "";
+            return '';
         }
 
-        return strtoupper($geometry->getType()) . '(' . $geometry->__toString() . ')';
+        return strtoupper($geometry->getType()).'('.$geometry->__toString().')';
     }
 
     /**
@@ -29,7 +24,7 @@ class GeometryToStringTransformer implements DataTransformerInterface
      */
     public function reverseTransform($string)
     {
-        if (null === $string || "" === $string) {
+        if (null === $string || '' === $string) {
             return null;
         }
 

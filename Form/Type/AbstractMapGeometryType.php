@@ -8,7 +8,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
 
-
 abstract class AbstractMapGeometryType extends AbstractType
 {
     /**
@@ -26,14 +25,14 @@ abstract class AbstractMapGeometryType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'map_attr' => array(
+        $resolver->setDefaults([
+            'map_attr' => [
                 'id' => 'map',
                 'style' => 'width:500px; height:400px;',
-            ),
-            'initial_lonlat' => array(139.774488, 35.684182), // Japan
+            ],
+            'initial_lonlat' => [139.774488, 35.684182], // Japan
             'initial_zoom' => 16,
-        ));
+        ]);
     }
 
     /**
@@ -41,8 +40,8 @@ abstract class AbstractMapGeometryType extends AbstractType
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $view->vars['map_attr']       = $options['map_attr'];
+        $view->vars['map_attr'] = $options['map_attr'];
         $view->vars['initial_lonlat'] = $options['initial_lonlat'];
-        $view->vars['initial_zoom']   = $options['initial_zoom'];
+        $view->vars['initial_zoom'] = $options['initial_zoom'];
     }
 }

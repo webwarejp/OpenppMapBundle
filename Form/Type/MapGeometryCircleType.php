@@ -8,9 +8,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Openpp\MapBundle\Form\EventListener\MapGeometoryCircleListener;
 
 /**
- * 
  * @author shiroko@webware.co.jp
- *
  */
 class MapGeometryCircleType extends AbstractMapGeometryType implements ContainerAwareInterface
 {
@@ -30,22 +28,22 @@ class MapGeometryCircleType extends AbstractMapGeometryType implements Container
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('address', 'text', array(
+            ->add('address', 'text', [
                 'label' => 'form.center_address',
                 'translation_domain' => 'OpenppMapBundle',
                 'mapped' => false,
-            ))
-            ->add('center', 'hidden', array(
+            ])
+            ->add('center', 'hidden', [
                 'label' => false,
-            ))
-            ->add('radius', 'integer', array(
+            ])
+            ->add('radius', 'integer', [
                 'label' => 'form.circle_radius',
                 'translation_domain' => 'OpenppMapBundle',
-                'attr' => array(
+                'attr' => [
                     'min' => 0,
                     'step' => 10,
-                ),
-            ))
+                ],
+            ])
             ->addEventSubscriber(new MapGeometoryCircleListener(
                 $this->containter->getParameter('openpp.map.circle.class')
             ))

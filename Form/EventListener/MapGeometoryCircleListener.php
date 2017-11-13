@@ -8,18 +8,20 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\DataTransformerInterface;
 use Openpp\MapBundle\Form\DataTransformer\GeometryToJsonTransformer;
 
-/**
- * 
- * @author shiroko@webware.co.jp
- *
- */
 class MapGeometoryCircleListener implements EventSubscriberInterface
 {
+    /**
+     * @var string
+     */
     protected $circleClass;
+
+    /**
+     * @var DataTransformerInterface
+     */
     protected $transformer;
 
     /**
-     * Constructor
+     * Initializes a new MapGeometoryCircleListener.
      *
      * @param string                   $circleClass
      * @param DataTransformerInterface $transformer
@@ -35,14 +37,13 @@ class MapGeometoryCircleListener implements EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             FormEvents::PRE_SET_DATA => 'onPreSetData',
-            FormEvents::SUBMIT       => 'onSubmit',
-        );
+            FormEvents::SUBMIT => 'onSubmit',
+        ];
     }
 
     /**
-     * 
      * @param FormEvent $event
      */
     public function onPreSetData(FormEvent $event)
@@ -53,15 +54,14 @@ class MapGeometoryCircleListener implements EventSubscriberInterface
             return;
         }
 
-        $event->setData(array(
+        $event->setData([
             'address' => null,
             'center' => $this->transformer->transform($data->getCenter()),
-            'radius' => $data->getRadius()
-        ));
+            'radius' => $data->getRadius(),
+        ]);
     }
 
     /**
-     * 
      * @param FormEvent $event
      */
     public function onSubmit(FormEvent $event)
@@ -75,7 +75,7 @@ class MapGeometoryCircleListener implements EventSubscriberInterface
         $circle = null;
         if (!empty($data['center']) && !empty($data['radius'])) {
             $circleClass = $this->circleClass;
-            $circle = new $circleClass;
+            $circle = new $circleClass();
             $circle->setCenter($this->transformer->reverseTransform($data['center']));
             $circle->setRadius($data['radius']);
         }

@@ -2,7 +2,6 @@
 
 namespace Openpp\MapBundle\Model;
 
-
 class Point implements PointInterface
 {
     /**
