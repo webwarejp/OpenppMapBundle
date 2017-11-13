@@ -2,14 +2,14 @@
 
 namespace Openpp\MapBundle\Form\DataTransformer;
 
-use Symfony\Component\Form\DataTransformerInterface;
+use CrEOF\Spatial\Exception\InvalidValueException;
+use CrEOF\Spatial\PHP\Types\Geometry\LineString;
+use CrEOF\Spatial\PHP\Types\Geometry\MultiLineString;
+use CrEOF\Spatial\PHP\Types\Geometry\MultiPoint;
+use CrEOF\Spatial\PHP\Types\Geometry\MultiPolygon;
 use CrEOF\Spatial\PHP\Types\Geometry\Point;
 use CrEOF\Spatial\PHP\Types\Geometry\Polygon;
-use CrEOF\Spatial\PHP\Types\Geometry\LineString;
-use CrEOF\Spatial\PHP\Types\Geometry\MultiPoint;
-use CrEOF\Spatial\PHP\Types\Geometry\MultiLineString;
-use CrEOF\Spatial\PHP\Types\Geometry\MultiPolygon;
-use CrEOF\Spatial\Exception\InvalidValueException;
+use Symfony\Component\Form\DataTransformerInterface;
 
 class GeometryToJsonTransformer implements DataTransformerInterface
 {
